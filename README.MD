@@ -1,0 +1,2 @@
+# 🍽️ Foody - Local Restaurant Rating Platform
+A modern, microservice-based web application for discovering, rating, and reviewing local restaurants. Built with Domain-Driven Design (DDD) principles and modular architecture.
