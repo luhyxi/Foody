@@ -375,3 +375,6 @@ Foody.Web/wwwroot/build/
 # Temporary folders
 tmp/
 temp/
+
+# My Personal Stuff
+ENGINEERING.md
