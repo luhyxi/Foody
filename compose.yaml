@@ -1,0 +1,7 @@
+﻿services:
+  foody.food.api:
+    image: foody.food.api
+    build:
+      context: .
+      dockerfile: Foody.Food.API/Dockerfile
+
