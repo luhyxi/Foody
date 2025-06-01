@@ -1,12 +1,13 @@
+using Foody.Shared.Kernel.Bases;
 using Foody.Shared.Kernel.Enums;
 using Foody.Shared.Kernel.ValueObjects;
 
 namespace Foody.Shared.Kernel.Entities;
 
-public class Restaurant(string name)
+public class Restaurant() : EntityBase<Guid>, IAggregateRoot
 {
-    string? UserName { get; set; } = name ?? throw new ArgumentNullException(nameof(name));
-    EntityStatus Status { get; set; } = EntityStatus.Inactive;
-    DateTime CreationDate{ get; set; } = DateTime.Now;
-    Score Score { get; set; } = (Score)1f;
+    public string? RestaurantName { get; set; } =  "";
+    public EntityStatus Status { get; set; } = EntityStatus.Inactive;
+    public DateTime CreationDate{ get; set; } = DateTime.Now;
+    public Score Score { get; set; } = (Score)1f;
 }
