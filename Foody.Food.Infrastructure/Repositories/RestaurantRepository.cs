@@ -1,3 +1,4 @@
+using Foody.Shared.Kernel.Bases;
 using Foody.Shared.Kernel.Entities;
 using Foody.Shared.Kernel.Interfaces;
 
@@ -5,8 +6,15 @@ namespace Foody.Food.Domain.Repositories;
 
 public class RestaurantRepository : IRestaurantRepository
 {
-    public IUnitOfWork UnitOfWork { get; }
-    
+    private readonly string _connectionString;
+    public IUnitOfWork UnitOfWork { get; init; }
+
+    public RestaurantRepository(string connectionString, IUnitOfWork unitOfWork)
+    {
+        _connectionString = connectionString;
+        UnitOfWork = unitOfWork;
+    }
+
     public Restaurant Add(Restaurant restaurant)
     {
         throw new NotImplementedException();

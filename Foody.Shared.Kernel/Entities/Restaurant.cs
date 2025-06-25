@@ -4,7 +4,7 @@ using Foody.Shared.Kernel.ValueObjects;
 
 namespace Foody.Shared.Kernel.Entities;
 
-public class Restaurant() : EntityBase<Guid>, IAggregateRoot
+public class Restaurant : EntityBase<Guid>, IAggregateRoot
 {
     public string? RestaurantName { get; set; } =  "";
     public EntityStatus Status { get; set; } = EntityStatus.Inactive;

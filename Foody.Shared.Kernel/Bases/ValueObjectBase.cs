@@ -3,7 +3,20 @@ namespace Foody.Shared.Kernel.Bases;
 [Serializable]
 public abstract class ValueObject : IComparable, IComparable<ValueObject>
 {
-    private int? _cachedHashCode;
+    private readonly Lazy<int> _cachedHashCode;
+
+    protected ValueObject()
+    {
+        _cachedHashCode = new Lazy<int>(() =>
+            GetEqualityComponents()
+                .Aggregate(1, (current, obj) =>
+                {
+                    unchecked
+                    {
+                        return current * 23 + (obj?.GetHashCode() ?? 0);
+                    }
+                }));
+    }
 
     protected abstract IEnumerable<object> GetEqualityComponents();
 
@@ -22,17 +35,6 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
 
     public override int GetHashCode()
     {
-        if (!_cachedHashCode.HasValue)
-        {
-            _cachedHashCode = GetEqualityComponents()
-                .Aggregate(1, (current, obj) =>
-                {
-                    unchecked
-                    {
-                        return current * 23 + (obj?.GetHashCode() ?? 0);
-                    }
-                });
-        }
         return _cachedHashCode.Value;
     }
 

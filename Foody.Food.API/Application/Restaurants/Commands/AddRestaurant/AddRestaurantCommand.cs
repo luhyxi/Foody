@@ -1,10 +1,24 @@
+using FluentValidation;
 using Foody.Food.Domain.Repositories;
 using Foody.Shared.Kernel.Entities;
+using Foody.Shared.Kernel.Enums;
+using Foody.Shared.Kernel.ValueObjects;
 using Foody.Shared.Messaging.Bases;
 using Foody.Shared.Messaging.ValueObjects;
 
-namespace Foody.Food.API.Application.Restaurants.AddRestaurant;
+namespace Foody.Food.API.Application.Restaurants.Commands.AddRestaurant;
 
+public class AddRestaurantCommand(
+    string restaurantName, 
+    EntityStatus status, 
+    DateTime creationDate, 
+    Score score) : ICommand<Guid>
+{
+    public string RestaurantName = restaurantName;
+    public EntityStatus Status = status;
+    public DateTime CreationDate = creationDate;
+    public Score Score = score;
+}
 public class AddRestaurantHandler(
     IRestaurantRepository restaurantRepository,
     IValidator<AddRestaurantCommand> validator,
@@ -27,7 +41,7 @@ public class AddRestaurantHandler(
             }
             
             var existingRestaurant = await _restaurantRepository.FindByNameAsync(command.RestaurantName, cancellationToken);
-            if (existingRestaurant is null)
+            if (existingRestaurant is not null)
             {
                 _logger.LogWarning("Restaurant with name '{Name}' already exists", command.RestaurantName);
                 return (Result<Guid>)RestaurantErrors.AlreadyExists(command.RestaurantName);

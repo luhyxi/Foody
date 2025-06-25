@@ -1,7 +1,6 @@
 using FluentValidation;
-using Foody.Shared.Messaging.Bases;
 
-namespace Foody.Food.API.Application.Restaurants.AddRestaurant;
+namespace Foody.Food.API.Application.Restaurants.Commands.AddRestaurant;
 
 public class AddRestaurantCommandValidator : AbstractValidator<AddRestaurantCommand>
 {

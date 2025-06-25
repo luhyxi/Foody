@@ -1,4 +1,4 @@
-namespace Foody.Shared.Kernel.Interfaces;
+namespace Foody.Shared.Kernel.Bases;
 
 public interface IUnitOfWork : IDisposable
 {
