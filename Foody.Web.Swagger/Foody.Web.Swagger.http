@@ -1,0 +1,6 @@
+@Foody.Web.Swagger_HostAddress = http://localhost:5197
+
+GET {{Foody.Web.Swagger_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

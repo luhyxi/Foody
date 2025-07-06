@@ -1,6 +1,0 @@
-@Food.Web.Swagger_HostAddress = http://localhost:5197
-
-GET {{Food.Web.Swagger_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

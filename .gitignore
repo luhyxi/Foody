@@ -379,3 +379,6 @@ temp/
 # My Personal Stuff
 ENGINEERING.md
 IDEAS.md
+
+# Database init scripts should be tracked
+!init-scripts/*.sql
