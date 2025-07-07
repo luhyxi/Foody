@@ -6,12 +6,12 @@ using Foody.Shared.Messaging.ValueObjects;
 
 namespace Foody.Food.API.Application.Restaurants.Queries;
 
-public class GetAllRestaurantsQuery : ICommand<List<Restaurant>>;
+public class GetAllRestaurantsQuery : IQuery<List<Restaurant>>;
 
 public class GetAllRestaurantsQueryHandler(
     IRestaurantRepository restaurantRepository,
     IValidator<GetAllRestaurantsQuery> validator,
-    ILogger<GetAllRestaurantsQuery> logger) : ICommandHandler<GetAllRestaurantsQuery, List<Restaurant>>
+    ILogger<GetAllRestaurantsQuery> logger) : IQueryHandler<GetAllRestaurantsQuery, List<Restaurant>>
 {
     private readonly IRestaurantRepository _restaurantRepository = restaurantRepository ?? throw new ArgumentNullException(nameof(restaurantRepository));
     private readonly IValidator<GetAllRestaurantsQuery> _validator = validator ?? throw new ArgumentNullException(nameof(validator));
